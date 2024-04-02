@@ -12,6 +12,9 @@ pip install django
 # Verificar las dependencias instaladas
 pip freeze
 
+# Volver a carpeta anterior
+cd ..
+
 # Crear un nuevo proyecto Django
 django-admin startproject helloworld
 
