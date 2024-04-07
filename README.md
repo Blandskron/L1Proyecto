@@ -1,46 +1,73 @@
-# L1Proyecto
-# Crear un entorno virtual
-python -m venv hello
+#Django
 
-# Activar el entorno virtual (en Windows)
+---
+
+## **Proyecto L1: Configuración Inicial de Django**
+
+### **1. Crear un Entorno Virtual**
+
+```bash
+python -m venv hello
+```
+
+### **2. Activar el Entorno Virtual (Windows)**
+
+```bash
 cd hello
 Scripts\activate
+```
 
-# Instalar Django
+### **3. Instalar Django**
+
+```bash
 pip install django
+```
 
-# Verificar las dependencias instaladas
+### **4. Verificar Dependencias Instaladas**
+
+```bash
 pip freeze
+```
 
-# Volver a carpeta anterior
-cd ..
+### **5. Crear un Nuevo Proyecto Django**
 
-# Crear un nuevo proyecto Django
+```bash
 django-admin startproject helloworld
+```
 
-# Cambiar al directorio del proyecto
+### **6. Crear una Nueva Aplicación**
+
+```bash
 cd helloworld
-
-# Crear una nueva aplicación dentro del proyecto
 python manage.py startapp myhelloapp
+```
 
-# Agregar la aplicación al archivo settings.py
+### **7. Configurar la Aplicación en `settings.py`**
+
+```python
 # settings.py
 INSTALLED_APPS = [
     ...
     'myhelloapp',
 ]
+```
 
-# Crear las migraciones para la nueva aplicación
+### **8. Generar y Aplicar Migraciones**
+
+```bash
 python manage.py makemigrations myhelloapp
-
-# Aplicar las migraciones
 python manage.py migrate
+```
 
-# Crear un archivo HTML básico en la carpeta de plantillas de la aplicación
-# Crear un directorio "templates" en la carpeta de la aplicación "myhelloapp"
+### **9. Crear Archivo HTML Básico**
+
+```bash
 mkdir myhelloapp/templates
-# Crear un archivo "index.html" dentro del directorio "templates"
+```
+
+Dentro de `myhelloapp/templates`, crear `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang='es'>
 <head>
@@ -52,25 +79,37 @@ mkdir myhelloapp/templates
     <h1>Hola mundo, hola Django</h1>
 </body>
 </html>
+```
 
-# Modificar views.py dentro de la aplicación para renderizar el archivo HTML
-# views.py
+### **10. Configurar las Vistas**
+
+En `myhelloapp/views.py`:
+
+```python
 from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
+```
 
-# Crear urls.py dentro de la aplicación para definir las rutas
-# urls.py
+### **11. Definir las Rutas**
+
+En `myhelloapp/urls.py`:
+
+```python
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
 ]
+```
 
-# Modificar urls.py en el directorio del proyecto para incluir las rutas de la aplicación
-# urls.py
+### **12. Incluir las Rutas de la Aplicación en el Proyecto**
+
+En `helloworld/urls.py`:
+
+```python
 from django.contrib import admin
 from django.urls import include, path
 
@@ -78,13 +117,26 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myhelloapp.urls'))
 ]
+```
 
-# Ejecutar el servidor de desarrollo
+### **13. Ejecutar el Servidor de Desarrollo**
+
+```bash
 python manage.py runserver
+```
 
-# Cerrar entorno virtual
+### **14. Desactivar el Entorno Virtual**
+
+```bash
 deactivate
+```
 
-# Crear archivo requiremenst.txt
+### **15. Crear Archivo `requirements.txt`**
+
+```bash
 pip freeze > requirements.txt
+```
 
+---
+
+Este tutorial te guiará a través de la configuración inicial de un proyecto Django, desde la creación del entorno virtual hasta la ejecución del servidor de desarrollo. ¡Disfruta construyendo con Django! 🚀
